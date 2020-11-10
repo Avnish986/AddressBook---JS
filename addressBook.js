@@ -181,15 +181,37 @@ function editDetails(fName,lName){
     }
 }
 
+function deleteContact(fName,lName){
+    let contact = checkExists(fName,lName);
+    if(contact === undefined){
+        console.log("No such Contact")
+        return;
+    }
+    else{
+        for(i=0;i<addressBookArray.length;i++){
+            if(addressBookArray[i].fName == fName && addressBookArray[i].lName == lName && i<addressBookArray.length-1){
+                addressBookArray.splice(i,1);
+                return;
+            }
+            else if(addressBookArray[i].fName == fName && addressBookArray[i].lName == lName && i==addressBookArray.length-1){
+                addressBookArray.pop();
+            }
+        }
+    }
+}
 try{
 let addressBookData = new AddressBookData("Avnish", "Gupta", "Streetabc", "Bathinda", "Punjab", "151001", "91 9999999999", "avnish@gmail.com");
 let addressBookData1 = new AddressBookData("Test", "Test", "Streetabc", "Testcity", "Testsate", "151001", "91 9999999998", "test@gmail.com");
-addressBookArray.push(addressBookData)
-addressBookArray.push(addressBookData1)
+let addressBookData2 = new AddressBookData("Testfirst", "Testfirst", "Streetabcd", "Testcityfirst", "Testsatefirst", "151002", "91 9999999997", "test1@gmail.com");
+addressBookArray.push(addressBookData);
+addressBookArray.push(addressBookData1);
+addressBookArray.push(addressBookData2);
 }
 catch(e){
     console.log(e);
 }
 console.log(addressBookArray);
-editDetails("Test","Test");
+//editDetails("Test","Test");
+deleteContact("Test","Test");
+console.log("after deletion")
 console.log(addressBookArray);

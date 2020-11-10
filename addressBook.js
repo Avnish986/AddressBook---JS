@@ -193,6 +193,14 @@ function getPersonByCity(city){
 function getPersonByState(state){
     return addressBookArray.filter(contact=> contact.state==state);
 }
+
+function searchPersonInCity(fName,city){
+    return addressBookArray.filter(contact=> contact.fName==fName && contact.city==city);
+    
+}
+function searchPersonInState(fName,state){
+    return addressBookArray.filter(contact=>contact.fName==fName &&  contact.state==state);
+}
 function deleteContact(fName,lName){
     let contact = checkExists(fName,lName);
     if(contact === undefined){
@@ -219,16 +227,18 @@ try{
 let addressBookData = new AddressBookData("Avnish", "Gupta", "Streetabc", "Bathinda", "Punjab", "151001", "91 9999999999", "avnish@gmail.com");
 let addressBookData1 = new AddressBookData("Test", "Test", "Streetabc", "Testcity", "Testsate", "151001", "91 9999999998", "test@gmail.com");
 let addressBookData2 = new AddressBookData("Testfirst", "Testfrist", "Streetabcd", "Testcityfirst", "Testsatefirst", "151002", "91 9999999997", "test1@gmail.com");
+let addressBookData3 = new AddressBookData("Testsecond", "Testsecond", "Streetabcd", "Testcityfirst", "Testsatefirst", "151002", "91 9999999997", "test1@gmail.com");
 addDetails(addressBookData);
 addDetails(addressBookData1);
 addDetails(addressBookData2);
+addDetails(addressBookData3);
 }
 catch(e){
     console.log(e);
 }
 console.log(addressBookArray);
 console.log("Conatcts in address Book: "+getCount());
-console.log("Contact by City");
-console.log(getPersonByCity("Testcity"));
-console.log("Contact by State");
-console.log(getPersonByState("Punjab"));
+console.log("View PersonContact by City");
+console.log(searchPersonInCity("Testfirst","Testcityfirst"));
+console.log("View PersonContact by by State");
+console.log(searchPersonInState("Avnish","Punjab"));

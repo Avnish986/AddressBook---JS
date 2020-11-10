@@ -187,7 +187,12 @@ function editDetails(fName,lName){
         }
     }
 }
-
+function getPersonByCity(city){
+    return addressBookArray.filter(contact=> contact.city==city);
+}
+function getPersonByState(state){
+    return addressBookArray.filter(contact=> contact.state==state);
+}
 function deleteContact(fName,lName){
     let contact = checkExists(fName,lName);
     if(contact === undefined){
@@ -223,3 +228,7 @@ catch(e){
 }
 console.log(addressBookArray);
 console.log("Conatcts in address Book: "+getCount());
+console.log("Contact by City");
+console.log(getPersonByCity("Testcity"));
+console.log("Contact by State");
+console.log(getPersonByState("Punjab"));

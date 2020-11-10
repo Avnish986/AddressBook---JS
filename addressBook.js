@@ -126,6 +126,15 @@ function addDetails(contact){
 function sortByPersonFirstName(){
     addressBookArray.sort((person1, person2) => person1.fName.localeCompare(person2.fName));
 }
+function sortByCity(){
+    addressBookArray.sort((person1, person2) => person1.city.localeCompare(person2.city));
+}
+function sortByState(){
+    addressBookArray.sort((person1, person2) => person1.state.localeCompare(person2.state));
+}
+function sortByZip(){
+    addressBookArray.sort((person1, person2) => person1.zip-person2.zip);
+}
 function editDetails(fName,lName){
     let contact = checkExists(fName,lName);
     if(contact === undefined){
@@ -237,9 +246,9 @@ function getCount(){
 }
 try{
 let addressBookData4 = new AddressBookData("Avnish", "Gupta", "Streetabc", "Bathinda", "Punjab", "151001", "91 9999999999", "avnish@gmail.com");
-let addressBookData1 = new AddressBookData("Test", "Test", "Streetabc", "Testcity", "Testsate", "151001", "91 9999999998", "test@gmail.com");
-let addressBookData2 = new AddressBookData("Testfirst", "Testfrist", "Streetabcd", "Testcityfirst", "Teststatefirst", "151002", "91 9999999997", "test1@gmail.com");
-let addressBookData3 = new AddressBookData("Testsecond", "Testsecond", "Streetabcd", "Testcityfirst", "Teststatefirst", "151002", "91 9999999997", "test1@gmail.com");
+let addressBookData1 = new AddressBookData("Test", "Test", "Streetabc", "Xtestcity", "Yteststate", "151003", "91 9999999998", "test@gmail.com");
+let addressBookData2 = new AddressBookData("Testfirst", "Testfrist", "Streetabcd", "Ctestcityfirst", "Hteststatefirst", "151002", "91 9999999997", "test1@gmail.com");
+let addressBookData3 = new AddressBookData("Testsecond", "Testsecond", "Streetabcd", "Ktestcityfirst", "Eteststatefirst", "151005", "91 9999999997", "test1@gmail.com");
 addDetails(addressBookData3);
 addDetails(addressBookData1);
 addDetails(addressBookData2);
@@ -249,6 +258,12 @@ catch(e){
     console.log(e);
 }
 console.log(addressBookArray);
-console.log("After sorting");
-sortByPersonFirstName();
-console.log(addressBookArray)
+console.log("After sorting by city");
+sortByCity();
+console.log(addressBookArray);
+console.log("After sorting by state");
+sortByState();
+console.log(addressBookArray);
+console.log("After sorting by zip");
+sortByZip();
+console.log(addressBookArray);

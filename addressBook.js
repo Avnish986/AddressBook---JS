@@ -115,7 +115,14 @@ function checkExists(fName, lName){
     });
     return contactDetails;
 }
-
+function addDetails(contact){
+    if(checkExists(contact.fName,contact.lName) == null){
+        addressBookArray.push(contact);
+    }
+    else{
+        throw "Already Exists!!";
+    }
+}
 function editDetails(fName,lName){
     let contact = checkExists(fName,lName);
     if(contact === undefined){
@@ -206,17 +213,13 @@ function getCount(){
 try{
 let addressBookData = new AddressBookData("Avnish", "Gupta", "Streetabc", "Bathinda", "Punjab", "151001", "91 9999999999", "avnish@gmail.com");
 let addressBookData1 = new AddressBookData("Test", "Test", "Streetabc", "Testcity", "Testsate", "151001", "91 9999999998", "test@gmail.com");
-let addressBookData2 = new AddressBookData("Testfirst", "Testfirst", "Streetabcd", "Testcityfirst", "Testsatefirst", "151002", "91 9999999997", "test1@gmail.com");
-addressBookArray.push(addressBookData);
-addressBookArray.push(addressBookData1);
-addressBookArray.push(addressBookData2);
+let addressBookData2 = new AddressBookData("Testfirst", "Testfrist", "Streetabcd", "Testcityfirst", "Testsatefirst", "151002", "91 9999999997", "test1@gmail.com");
+addDetails(addressBookData);
+addDetails(addressBookData1);
+addDetails(addressBookData2);
 }
 catch(e){
     console.log(e);
 }
 console.log(addressBookArray);
-//editDetails("Test","Test");
-//deleteContact("Test","Test");
-//console.log("after deletion")
-//console.log(addressBookArray);
-console.log("Total contacts in addressBook: "+ getCount());
+console.log("Conatcts in address Book: "+getCount());

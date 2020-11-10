@@ -104,7 +104,83 @@ class AddressBookData{
         return "FirstName = " + this.fName + ", LastName = " + this.lName + ", Address = " + this.address + ", City = " + this.city + ", State = " + this.state + ", Zipcode = " + this.zip + ", PhoneNo = " + this.phNo + ", Email = " + this.email
     }
 }
-let addressBookArray = new Array()
+let addressBookArray = new Array();
+
+function checkExists(fName, lName){
+    let contactDetails;
+    addressBookArray.forEach(contact => {
+        if(contact.fName == fName && contact.lName == lName){
+            contactDetails = contact;
+        }
+    });
+    return contactDetails;
+}
+
+function editDetails(fName,lName){
+    let contact = checkExists(fName,lName);
+    if(contact === undefined){
+        console.log("No such Contact")
+        return;
+    }
+    else{
+        console.log("1. Edit Firstname");
+        console.log("2. Edit Lastname");
+        console.log("3.Edit address");
+        console.log("4.Edit city");
+        console.log("5.Edit state");
+        console.log("6.Edit zip");
+        console.log("7.Edit phone number");
+        console.log("8.Edit email");
+        const prompt = require("prompt-sync")();
+        let option = parseInt(prompt("Choose a num"));
+        switch(option){
+            case 1:
+                fName = prompt("Enter Updated Firstname");
+                contact.fName = fName;
+                break;
+
+            case 2:
+                lName = prompt("Enter Updated Lastname");
+                contact.lName = lName;
+                break;
+                
+            case 3:
+                address = prompt("Enter Updated address");
+                contact.address = address;
+                break;
+
+            case 4:
+                city = prompt("Enter Updated city");
+                contact.city = city;
+                break;
+                
+            case 5:
+                state = prompt("Enter Updated state");
+                contact.state = state;
+                break;
+                
+            case 6:
+                zip = prompt("Enter Updated zip");
+                contact.zip = zip;
+                break;
+
+            case 7:
+                phNo = prompt("Enter Updated PhoneNo");
+                contact.phNo = phNo;
+                break;
+                
+             case 8:
+                email = prompt("Enter Updated Email");
+                contact.email = email;
+                break;
+                
+                default:
+                    console.log("Not valid");
+
+        }
+    }
+}
+
 try{
 let addressBookData = new AddressBookData("Avnish", "Gupta", "Streetabc", "Bathinda", "Punjab", "151001", "91 9999999999", "avnish@gmail.com");
 let addressBookData1 = new AddressBookData("Test", "Test", "Streetabc", "Testcity", "Testsate", "151001", "91 9999999998", "test@gmail.com");
@@ -114,4 +190,6 @@ addressBookArray.push(addressBookData1)
 catch(e){
     console.log(e);
 }
-console.log(addressBookArray)
+console.log(addressBookArray);
+editDetails("Test","Test");
+console.log(addressBookArray);

@@ -123,6 +123,9 @@ function addDetails(contact){
         throw "Already Exists!!";
     }
 }
+function sortByPersonFirstName(){
+    addressBookArray.sort((person1, person2) => person1.fName.localeCompare(person2.fName));
+}
 function editDetails(fName,lName){
     let contact = checkExists(fName,lName);
     if(contact === undefined){
@@ -233,21 +236,19 @@ function getCount(){
     return addressBookArray.reduce(count=> count+1,0);
 }
 try{
-let addressBookData = new AddressBookData("Avnish", "Gupta", "Streetabc", "Bathinda", "Punjab", "151001", "91 9999999999", "avnish@gmail.com");
+let addressBookData4 = new AddressBookData("Avnish", "Gupta", "Streetabc", "Bathinda", "Punjab", "151001", "91 9999999999", "avnish@gmail.com");
 let addressBookData1 = new AddressBookData("Test", "Test", "Streetabc", "Testcity", "Testsate", "151001", "91 9999999998", "test@gmail.com");
 let addressBookData2 = new AddressBookData("Testfirst", "Testfrist", "Streetabcd", "Testcityfirst", "Teststatefirst", "151002", "91 9999999997", "test1@gmail.com");
 let addressBookData3 = new AddressBookData("Testsecond", "Testsecond", "Streetabcd", "Testcityfirst", "Teststatefirst", "151002", "91 9999999997", "test1@gmail.com");
-addDetails(addressBookData);
+addDetails(addressBookData3);
 addDetails(addressBookData1);
 addDetails(addressBookData2);
-addDetails(addressBookData3);
+addDetails(addressBookData4);
 }
 catch(e){
     console.log(e);
 }
 console.log(addressBookArray);
-console.log("Conatcts in address Book: "+getCount());
-console.log("Count PersonContact by City");
-console.log(personCountByCity("Bathinda"));
-console.log("Count PersonContact by by State");
-console.log(personCountByState("Teststatefirst"));
+console.log("After sorting");
+sortByPersonFirstName();
+console.log(addressBookArray)

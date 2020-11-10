@@ -199,6 +199,10 @@ function deleteContact(fName,lName){
         }
     }
 }
+
+function getCount(){
+    return addressBookArray.reduce(count=> count+1,0);
+}
 try{
 let addressBookData = new AddressBookData("Avnish", "Gupta", "Streetabc", "Bathinda", "Punjab", "151001", "91 9999999999", "avnish@gmail.com");
 let addressBookData1 = new AddressBookData("Test", "Test", "Streetabc", "Testcity", "Testsate", "151001", "91 9999999998", "test@gmail.com");
@@ -212,6 +216,7 @@ catch(e){
 }
 console.log(addressBookArray);
 //editDetails("Test","Test");
-deleteContact("Test","Test");
-console.log("after deletion")
-console.log(addressBookArray);
+//deleteContact("Test","Test");
+//console.log("after deletion")
+//console.log(addressBookArray);
+console.log("Total contacts in addressBook: "+ getCount());
